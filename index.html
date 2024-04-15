@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<title></title>
+</head>
+
+
+<body>
+	
+		<header>
+				<div class="head_item"><img src="images\логотип.png"></div>
+				<div class="head_item name"><a href="#">Автошкола IDrive</a></div>
+				<div class="head_item number">+7(924) 250-37-17</div>
+		</header>
+
+	
+		<div class="menu">
+			<ul>
+				<li><a href="#suggestions">Наборы и цены</a></li>
+				<li><a href="команда.html">Команда</a></li>
+				<li><a href="test.html">Проверьте себя</a></li>
+				<li><a href="FAQ.html">FAQ</a></li>
+			</ul>
+		</div>
+	<div class="content">
+		<h1><a name="aboutus">Про автошколу</a></h1>
+		<div class="text">
+			<p>Вот уже 11 лет «IDrive» готовит водителей категорий А-А1, B, С. За это время в нашей автошколе прошли обучение на права более 16 000 учеников. Из года в год наши выпускники показывают один из самых высоких процентов успешной сдачи экзаменов в ГИБДД.</p>
+
+			<p>В основе нашей работы — высокий профессионализм преподавателей и инструкторов, индивидуальный подход каждому ученику.</p>
+
+			<p>В «IDrive» вас ждут современные компьютерные классы, уникальные автотренажеры, которые могут отточить навыки вождения с нуля и наработать опыт перед началом практических занятий на автодроме.</p>
+
+			<p>Наша система обучения разработана, чтобы сделать процесс максимально комфортным для учеников:</p>
+			<ul>
+				<li>выбирайте филиал автошколы и оставляйте заявку на обучение; </li>
+				<li>заключайте договор на категорию B онлайн;</li>
+				<li>изучайте теорию очно или дистанционно;</li>
+				<li>записывайтесь на занятия онлайн в личном кабинете ученика или через мобильные приложения «IDrive» для iOS и Android . </li>
+			</ul>   
+			<p>Автошкола «IDrive» — твоя свобода передвижения!</p>
+		</div>
+		<hr>
+		<h1><a name="suggestions">Предлагаем обучение по категориям:</a></h1>
+
+		<div class="categories">
+			
+			<div class="category_item">
+				<div class="insides">
+					<a href="category.html" onClick="localStorage.setItem('struct', 0)">Категория А, А1</a>
+				</div>
+				<div class="insides">
+					<img src="images\мотоцикл.png" class="auto">
+				</div>
+				<div class="insides">от 15 500 р.</div>
+			</div>
+
+			<div  class="category_item">
+				<div class="insides">
+					<a href="category.html" onClick="localStorage.setItem('struct', 1)">Категория В</a>
+				</div>
+				<div class="insides">
+					<img src="images\автомобиль.png" class="auto">
+				</div>
+				<div class="insides">от 32 900 р.</div>				
+			</div>
+
+			<div  class="category_item">
+				<div class="insides">
+					<a href="category.html" onClick="localStorage.setItem('struct', 2)">Категория С</a>
+				</div>
+				<div class="insides">
+					<img src="images\грузовик.png" class="auto">
+				</div>
+				<div class="insides">от 35 000 р.</div>				
+			</div>
+
+			<div  class="category_item">
+				<div class="insides">
+					<a href="category.html" onClick="localStorage.setItem('struct', 3)">Категория D</a>
+				</div>
+				<div class="insides">
+					<img src="images\автобус.png" class="auto">
+				</div>
+				<div class="insides">от 42 000 p.</div>				
+			</div>
+		</div>
+		<hr>
+		<h1>Автомобили «IDrive»:</h1>
+
+	<div id = forms>
+		<div>
+		<h3>Фильтр</h3>
+	    <form>
+	      <p>
+	        <label for="mark">Марка:</label>
+	        <input type="text" name="mark">
+	      </p>
+	      <p>
+	        <label for="model">Модель:</label>
+	        <input type="text" name="model">
+	      </p>
+	      <p>
+	        <label for="type">Тип КПП:</label>
+	        <input type="text" name="type">
+	      </p>
+	      <p>
+	        <label for="drive">Привод:</label>
+	        <input type="text" name="drive">
+	      </p>
+	      <p>
+	        <label for="yearFrom">Год:</label>
+	        от <input type="number" name="yearFrom"> до <input type="number" name="yearTo">
+	      </p>
+	      <p>
+	        <label for="powerFrom">Мощность:</label>
+	        от <input type="number" name="powerFrom"> до <input type="number" name="powerTo">
+	      </p>
+	      <input type="button" value="Найти" onclick="filterTable('list', this.form)">
+	      <input type="button" value="Отчистить" onclick="clearFilter('list', this.form)">
+	    </form>
+	  </div>
+	  <div>
+	    <h3>Сортировка</h3>
+	    <form>
+	      <p>
+	        Сортировать по
+	        <select id="fields"></select><br>
+	      </p>
+	      <p>
+	        По убыванию? <input type="checkbox" id="desc">
+	      </p>
+	      <input type="button" value="Сортировать" onclick="sortTable('list', this.form.fields.value, this.form.desc.checked)">
+	      <input type="button" value="Сбросить сортировку" onclick="sortTable('list', 0, false)">
+	    </form>
+	  </div>
+	</div>
+
+		<table id="list">
+        <tr>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Тип коробки переключения передач</th>
+            <th>Привод</th>
+            <th>Год выпуска</th>
+            <th>Мощность (л.с.)</th>
+        </tr>
+        <tr>
+            <td>Toyota</td>
+            <td>Camry</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>203</td>
+        </tr>
+        <tr>
+            <td>Honda</td>
+            <td>Civic</td>
+            <td>Механическая</td>
+            <td>Передний</td>
+            <td>2020</td>
+            <td>158</td>
+        </tr>
+        <tr>
+            <td>Ford</td>
+            <td>Focus</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2018</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>Chevrolet</td>
+            <td>Cruze</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2017</td>
+            <td>153</td>
+        </tr>
+        <tr>
+            <td>BMW</td>
+            <td>3 Series</td>
+            <td>Автоматическая</td>
+            <td>Задний</td>
+            <td>2021</td>
+            <td>255</td>
+        </tr>
+        <tr>
+            <td>Audi</td>
+            <td>A4</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>188</td>
+        </tr>
+        <tr>
+            <td>Mercedes-Benz</td>
+            <td>C-Class</td>
+            <td>Автоматическая</td>
+            <td>Задний</td>
+            <td>2020</td>
+            <td>255</td>
+        </tr>
+        <tr>
+            <td>Volkswagen</td>
+            <td>Passat</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2018</td>
+            <td>174</td>
+        </tr>
+        <tr>
+            <td>Hyundai</td>
+            <td>Sonata</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2021</td>
+            <td>191</td>
+        </tr>
+        <tr>
+            <td>Kia</td>
+            <td>Sportage</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>181</td>
+        </tr>
+        <tr>
+            <td>Subaru</td>
+            <td>Impreza</td>
+            <td>Механическая</td>
+            <td>Полный</td>
+            <td>2020</td>
+            <td>152</td>
+        </tr>
+        <tr>
+            <td>Mazda</td>
+            <td>3</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2018</td>
+            <td>155</td>
+        </tr>
+        <tr>
+            <td>Nissan</td>
+            <td>Altima</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>182</td>
+        </tr>
+        <tr>
+            <td>Jeep</td>
+            <td>Grand Cherokee</td>
+            <td>Автоматическая</td>
+            <td>Полный</td>
+            <td>2021</td>
+            <td>293</td>
+        </tr>
+        <tr>
+            <td>Land Rover</td>
+            <td>Range Rover Sport</td>
+            <td>Автоматическая</td>
+            <td>Полный</td>
+            <td>2020</td>
+            <td>518</td>
+        </tr>
+        <tr>
+            <td>Porsche</td>
+            <td>Cayenne</td>
+            <td>Автоматическая</td>
+            <td>Полный</td>
+            <td>2021</td>
+            <td>335</td>
+        </tr>
+        <tr>
+            <td>Volvo</td>
+            <td>S60</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>250</td>
+        </tr>
+        <tr>
+            <td>Jaguar</td>
+            <td>F-PACE</td>
+            <td>Автоматическая</td>
+            <td>Полный</td>
+            <td>2020</td>
+            <td>296</td>
+        </tr>
+        <tr>
+            <td>Lexus</td>
+            <td>ES</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2021</td>
+            <td>203</td>
+        </tr>
+        <tr>
+            <td>Acura</td>
+            <td>TLX</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>272</td>
+        </tr>
+        <tr>
+            <td>Cadillac</td>
+            <td>XT5</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2020</td>
+            <td>310</td>
+        </tr>
+        <tr>
+            <td>Buick</td>
+            <td>Encore</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2018</td>
+            <td>138</td>
+        </tr>
+        <tr>
+            <td>Chrysler</td>
+            <td>300</td>
+            <td>Автоматическая</td>
+            <td>Задний</td>
+            <td>2019</td>
+            <td>292</td>
+        </tr>
+        <tr>
+            <td>Dodge</td>
+            <td>Charger</td>
+            <td>Автоматическая</td>
+            <td>Задний</td>
+            <td>2021</td>
+            <td>292</td>
+        </tr>
+        <tr>
+            <td>Ram</td>
+            <td>1500</td>
+            <td>Автоматическая</td>
+            <td>Задний</td>
+            <td>2020</td>
+            <td>305</td>
+        </tr>
+        <tr>
+            <td>GMC</td>
+            <td>Terrain</td>
+            <td>Автоматическая</td>
+            <td>Передний</td>
+            <td>2019</td>
+            <td>170</td>
+        </tr>
+    </table>
+	</div>
+</body>
+<script src="program.js"></script>
+</html>
