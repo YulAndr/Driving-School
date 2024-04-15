@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="style.css">
+	<title></title>
+</head>
+<body onLoad="drawing()">
+	<header>
+			<div class="head_item"><img src="images\логотип.png"></div>
+			<div class="head_item name"><a href="index.html">Автошкола IDrive</a></div>
+			<div class="head_item number">+7(924) 250-37-17</div>
+	</header>
+
+	
+	<div class="menu">
+		<ul>
+			<li><a href="index.html#suggestions">Наборы и цены</a></li>
+			<li><a href="команда.html">Команда</a></li>
+			<li><a href="FAQ.html">FAQ</a></li>
+			<li><a href="index.html#aboutus">Про нас</a></li>
+		</ul>
+	</div>
+	<div class="content">
+		<h3>Как хорошо вы знаете ПДД?</h3>
+        <form>
+            <div id="blockTest">
+     <!-- вопросы будем формировать в виде списка -->
+                <ol id="test">
+                </ol>
+     
+     <!-- вызываем функцию проверки тестирования -->
+                <input type="button" value="Закончить тестирование" onClick="checkTest(test)">
+     <!-- вызываем функцию, которая позволяет повторить тестирование -->
+                <input type="button" value="Повторить тестирование" onClick="clearTest(test)">
+     
+     <!-- сюда будем выводить результат -->
+                <p id="result"></p>
+            </div>
+        </form>
+        <h3>Проверьте себя: остановитесь в правильном месте</h3>
+        <p id='stopLine'></p>
+        <div>
+        	<canvas id="canvas" width="700" height="400">
+        </canvas>
+        <form>
+            <input type="button" value="Остановить" name="run" onClick="clickButton(this.form.run)">
+        </form>
+        </div>
+	</div>
+</body>
+<script src="program.js"></script>
+</html>
